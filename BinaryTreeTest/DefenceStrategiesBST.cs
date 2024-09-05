@@ -8,5 +8,8 @@ namespace BinaryTreeTest
 {
     internal class DefenceStrategiesBST
     {
+        public DefenceStrategiesBST() { }
+        
+        
     }
 }

@@ -6,6 +6,7 @@ class Program
 {
     static async Task Main(string[] args)
     {
+        Console.WriteLine("Creates a defence binary tree...");
         using StreamReader reader = new("C:\\Users\\internet\\source\\repos\\BinaryTreeTest\\BinaryTreeTest\\defence.json");
         var json = reader.ReadToEnd();
         List<Node> stratgy = JsonConvert.DeserializeObject<List<Node>>(json);
@@ -13,18 +14,23 @@ class Program
         foreach (Node node in stratgy)
         {
             defenceStrategiesBST.Insert(node);
-         
         }
-        //Console.WriteLine(defenceStrategiesBST.count);
-        //defenceStrategiesBST.preorderTraversal();
-       
-        using StreamReader reader2 = new("C:\\Users\\internet\\source\\repos\\BinaryTreeTest\\BinaryTreeTest\\threats.json");
-        var jsonthreats = reader2.ReadToEnd();
-        List<threat> threats =  JsonConvert.DeserializeObject<List<threat>>(jsonthreats);
-        Console.WriteLine(threats.Count);
-        await severitycalculation(threats);
+        Task.Delay(4000).Wait();
+        Console.WriteLine("Binary tree created successfully!");
+        await Importsthreats();
     }
 
+    public static async Task Importsthreats() 
+    {
+        Console.WriteLine("imports threats...");
+        using StreamReader reader2 = new("C:\\Users\\internet\\source\\repos\\BinaryTreeTest\\BinaryTreeTest\\threats.json");
+        var jsonthreats = reader2.ReadToEnd();
+        List<threat> threats = JsonConvert.DeserializeObject<List<threat>>(jsonthreats);
+        await severitycalculation(threats);
+        Task.Delay(4000).Wait();
+        Console.WriteLine("All threats have been identified");
+
+    }
 
 
     public static async Task severitycalculation(List<threat> threats)
@@ -34,7 +40,7 @@ class Program
         {
             TargetValue = await converter(threat.Target);
             threat.Severity = (threat.Volume * threat.Sophistication) + TargetValue;
-            Console.WriteLine(threat.Severity); 
+            //Console.WriteLine(threat.Severity); 
         }
     }
     

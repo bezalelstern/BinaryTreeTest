@@ -11,9 +11,14 @@ namespace BinaryTreeTest
         public DefenceStrategiesBST() { }
         public Node Root;
         public int count = 0;
+        public double MinSeverity = 0;
 
         public void Insert(Node node)
         {
+            if (node.MinSeverity < MinSeverity)
+            {
+                MinSeverity = node.MinSeverity;
+            }
             Root = Insertrec(Root, node);
             count++;
         }

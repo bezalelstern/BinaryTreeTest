@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BinaryTreeTest.Models;
 
-namespace BinaryTreeTest
+namespace BinaryTreeTest.servis
 {
     public class ThreatsCalculate
     {
@@ -13,14 +14,13 @@ namespace BinaryTreeTest
         {
 
             Console.WriteLine("Calculates the severity of threats...");
-            
+
             Thread.Sleep(4000);
             int TargetValue;
             foreach (threat threat in threats)
             {
                 TargetValue = converter(threat.Target);
-                threat.Severity = (threat.Volume * threat.Sophistication) + TargetValue;
-                //Console.WriteLine(threat.Severity); 
+                threat.Severity = threat.Volume * threat.Sophistication + TargetValue;
             }
             Console.WriteLine("The severity of the threats was calculated");
         }

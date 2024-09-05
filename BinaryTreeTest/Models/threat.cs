@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BinaryTreeTest
+namespace BinaryTreeTest.Models
 {
     public class threat
     {
@@ -12,6 +12,6 @@ namespace BinaryTreeTest
         public int Volume;
         public int Sophistication;
         public string Target;
-        public Double Severity;
+        public double Severity;
     }
 }

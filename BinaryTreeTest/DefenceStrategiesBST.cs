@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BinaryTreeTest.Models;
 
 namespace BinaryTreeTest
 {
@@ -65,7 +66,7 @@ namespace BinaryTreeTest
                 str = "|__ Right Child:";
             else if (location == "left")
                 str = "|__ Left Child:";
-            space += " ";
+            space += "  ";
             Console.WriteLine($"{space} {str} [{root.MinSeverity} - {root.MaxSeverity}] Defences: {root.Defenses[0]}, {root.Defenses[1]}");
             if (root.Left != null)
             {

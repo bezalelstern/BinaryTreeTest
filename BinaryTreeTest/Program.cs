@@ -2,11 +2,13 @@
 using System.Reflection;
 using System.Threading;
 using BinaryTreeTest;
+using BinaryTreeTest.Models;
+using BinaryTreeTest.servis;
 using Newtonsoft.Json;
 class Program
 {
-    public static string DefencePath = "C:\\Users\\internet\\source\\repos\\BinaryTreeTest\\BinaryTreeTest\\defence.json";
-    public static string AttackPath = "C:\\Users\\internet\\source\\repos\\BinaryTreeTest\\BinaryTreeTest\\threats.json";
+    public static string DefencePath = "C:\\Users\\internet\\source\\repos\\BinaryTreeTest\\BinaryTreeTest\\json\\defence.json";
+    public static string AttackPath = "C:\\Users\\internet\\source\\repos\\BinaryTreeTest\\BinaryTreeTest\\json\\threats.json";
 
 
     public static DefenceStrategiesBST DefenceStrategiesBST= new DefenceStrategiesBST();

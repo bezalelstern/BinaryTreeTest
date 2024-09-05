@@ -4,6 +4,7 @@ using BinaryTreeTest;
 using Newtonsoft.Json;
 class Program
 {
+
     static async Task Main(string[] args)
     {
         Console.WriteLine("Creates a defence binary tree...");
@@ -15,6 +16,8 @@ class Program
         {
             defenceStrategiesBST.Insert(node);
         }
+        Console.WriteLine(defenceStrategiesBST.count);
+        defenceStrategiesBST.preorderTraversal();
         Task.Delay(4000).Wait();
         Console.WriteLine("Binary tree created successfully!");
         await Importsthreats();
@@ -40,7 +43,7 @@ class Program
         {
             TargetValue = await converter(threat.Target);
             threat.Severity = (threat.Volume * threat.Sophistication) + TargetValue;
-            //Console.WriteLine(threat.Severity); 
+            Console.WriteLine(threat.Severity); 
         }
     }
     
@@ -61,5 +64,17 @@ class Program
                 break;
         }
         return value;
+    }
+
+    public static async Task activet(List<threat> threats, DefenceStrategiesBST bst )
+    {
+        foreach (threat threat in threats)
+        {
+            if(threat.Severity < bst.MinSeverity)
+            {
+                Console.WriteLine("is severity Attack below the threshold. Attack is ignored");
+            }
+
+        }
     }
 }

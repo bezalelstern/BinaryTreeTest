@@ -4,35 +4,40 @@ using BinaryTreeTest;
 using Newtonsoft.Json;
 class Program
 {
-
+    public static DefenceStrategiesBST DefenceStrategiesBST= new DefenceStrategiesBST();
+    public static string DefencePath = "C:\\Users\\internet\\source\\repos\\BinaryTreeTest\\BinaryTreeTest\\defence.json";
+    public static string AttackPath = "C:\\Users\\internet\\source\\repos\\BinaryTreeTest\\BinaryTreeTest\\threats.json";
     static async Task Main(string[] args)
     {
+
         Console.WriteLine("Creates a defence binary tree...");
-        using StreamReader reader = new("C:\\Users\\internet\\source\\repos\\BinaryTreeTest\\BinaryTreeTest\\defence.json");
+        using StreamReader reader = new(DefencePath);
         var json = reader.ReadToEnd();
         List<Node> stratgy = JsonConvert.DeserializeObject<List<Node>>(json);
-        DefenceStrategiesBST defenceStrategiesBST = new DefenceStrategiesBST();
+        DefenceStrategiesBST = new DefenceStrategiesBST();
         foreach (Node node in stratgy)
         {
-            defenceStrategiesBST.Insert(node);
+            DefenceStrategiesBST.Insert(node);
         }
-        Console.WriteLine(defenceStrategiesBST.count);
-        defenceStrategiesBST.preorderTraversal();
-        Task.Delay(4000).Wait();
+  
+       
+        Task.Delay(2000).Wait();
         Console.WriteLine("Binary tree created successfully!");
+        DefenceStrategiesBST.preorderTraversal();
         await Importsthreats();
+        
     }
 
     public static async Task Importsthreats() 
     {
         Console.WriteLine("imports threats...");
-        using StreamReader reader2 = new("C:\\Users\\internet\\source\\repos\\BinaryTreeTest\\BinaryTreeTest\\threats.json");
+        using StreamReader reader2 = new(AttackPath);
         var jsonthreats = reader2.ReadToEnd();
         List<threat> threats = JsonConvert.DeserializeObject<List<threat>>(jsonthreats);
         await severitycalculation(threats);
-        Task.Delay(4000).Wait();
+        Task.Delay(2000).Wait();
         Console.WriteLine("All threats have been identified");
-
+        await activet(threats, DefenceStrategiesBST);
     }
 
 
@@ -68,13 +73,25 @@ class Program
 
     public static async Task activet(List<threat> threats, DefenceStrategiesBST bst )
     {
-        foreach (threat threat in threats)
+        for (int i = 0; i < threats.Count; i++) 
         {
-            if(threat.Severity < bst.MinSeverity)
+            if (threats[i].Severity < bst.MinSeverity) 
             {
-                Console.WriteLine("is severity Attack below the threshold. Attack is ignored");
+                Console.WriteLine($"Threats {i+1} is severity Attack below the threshold. Attack is ignored");
             }
-
+            else {
+                Node defence =  bst.Find(threats[i].Severity);
+                Console.WriteLine($"Threat {i+1} in progres");
+                Task.Delay(2000).Wait();
+                if (defence != null)
+                {
+                    Console.WriteLine(defence.Defenses[0]);
+                    Console.WriteLine(defence.Defenses[1]);
+                }
+                else { Console.WriteLine("No suitable defence wes found. Brace for impact"); }
+                Console.WriteLine();
+            }
+            
         }
     }
 }

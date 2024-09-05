@@ -12,7 +12,7 @@ namespace BinaryTreeTest
         public Node Root;
         public int count = 0;
         public int MinSeverity = 0;
-        public int MaxSeverity = 0;
+        
 
         public void Insert(Node node)
         {
@@ -20,11 +20,12 @@ namespace BinaryTreeTest
             {
                 MinSeverity = node.MinSeverity;
             }
-            if (node.MaxSeverity > MaxSeverity) 
-            { MaxSeverity = node.MaxSeverity; }
             Root = Insertrec(Root, node);
             count++;
         }
+
+
+
         private Node Insertrec(Node root, Node node)
         {
             if (root == null)
@@ -73,6 +74,22 @@ namespace BinaryTreeTest
             {
                 Console.WriteLine("There is no tree to process");
             }
-        }       
+        }
+        public Node Find(double data)
+        {
+            Node result =  Findrec(Root, data);
+            return result;
+        }
+
+        public Node Findrec(Node node, double data)
+        {
+            if (node == null)
+                return node;
+            if (data <= node.MaxSeverity && data >= node.MinSeverity)
+            { 
+                return node;              
+            }
+            return Findrec(data < node.MinSeverity ? node.Left : node.Right, data);
+        }
     }
 }

@@ -15,6 +15,7 @@ namespace BinaryTreeTest
         public int MinSeverity = 0;
         
         //הוספה לעץ
+        //סיבוכיות (n)
         public void Insert(Node node)
         {
             if (node.MinSeverity < MinSeverity)
@@ -45,6 +46,7 @@ namespace BinaryTreeTest
         }
 
         //הדפסה
+        //(n)
         public void preorderTraversal()
         {
             if (Root != null)
@@ -79,6 +81,7 @@ namespace BinaryTreeTest
         }
 
        //חיפוש הגנה מתאימה
+        //סיבוכיות log(n)
         public Node Find(double data)
         {
             Node result =  Findrec(Root, data);

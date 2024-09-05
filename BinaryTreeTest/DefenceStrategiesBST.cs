@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BinaryTreeTest
 {
-    internal class DefenceTree
+    internal class DefenceStrategiesBST
     {
     }
 }

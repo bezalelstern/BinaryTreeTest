@@ -12,7 +12,7 @@ namespace BinaryTreeTest
 
         public int MinSeverity;
         public int MaxSeverity;
-        public string Defenses;
+        public List<string> Defenses;
         public Node Left;
         public Node Right;
     }

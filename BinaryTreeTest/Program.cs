@@ -9,11 +9,15 @@ class Program
         using StreamReader reader = new("C:\\Users\\internet\\source\\repos\\BinaryTreeTest\\BinaryTreeTest\\json2.json");
         var json = reader.ReadToEnd();
         List<Node> stratgy = JsonConvert.DeserializeObject<List<Node>>(json);
+        DefenceStrategiesBST defenceStrategiesBST = new DefenceStrategiesBST();
         foreach (Node node in stratgy)
         {
-            Console.WriteLine(node.Defenses[0]);
+            defenceStrategiesBST.Insert(node);
+            //Console.WriteLine(node.Defenses[0]);
         }
-        //Console.WriteLine(stratgy[0].Left.Defenses[0]);
-      
+        Console.WriteLine(defenceStrategiesBST.count);
+        defenceStrategiesBST.preorderTraversal();
+
+       
     }
 }

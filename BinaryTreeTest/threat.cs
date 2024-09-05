@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BinaryTreeTest
 {
-    internal class threat
+    public class threat
     {
         public string ThreatType;
         public int Volume;

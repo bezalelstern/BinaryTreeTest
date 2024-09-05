@@ -13,7 +13,7 @@ namespace BinaryTreeTest
         public int count = 0;
         public int MinSeverity = 0;
         
-
+        //הוספה לעץ
         public void Insert(Node node)
         {
             if (node.MinSeverity < MinSeverity)
@@ -43,6 +43,19 @@ namespace BinaryTreeTest
             return root;
         }
 
+        //הדפסה
+        public void preorderTraversal()
+        {
+            if (Root != null)
+            {
+                recursivePreorder(Root, "root", "");
+            }
+            else
+            {
+                Console.WriteLine("There is no tree to process");
+            }
+        }
+
         private void recursivePreorder(Node root, string location, string space)
         {
             string str = "";
@@ -64,17 +77,7 @@ namespace BinaryTreeTest
             }
         }
 
-        public void preorderTraversal()
-        {
-            if (Root != null)
-            {
-                recursivePreorder(Root, "root", "");
-            }
-            else
-            {
-                Console.WriteLine("There is no tree to process");
-            }
-        }
+       //חיפוש הגנה מתאימה
         public Node Find(double data)
         {
             Node result =  Findrec(Root, data);
